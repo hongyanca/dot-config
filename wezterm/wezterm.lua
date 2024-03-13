@@ -1,19 +1,18 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
-local config = wezterm.config_builder()
-
 -- This will hold the configuration.
 -- local config = wezterm.config_builder()
 local config = {
   font_size = 15.6,
   font = wezterm.font("DejaVuSansMono Nerd Font"),
   -- font = wezterm.font("BlexMono Nerd Font"),
-  -- color_scheme = 'Dissonance (Gogh)',
+  cell_width = 0.90,
   line_height = 1.075,
 
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
+  tab_max_width = 48,
   window_decorations = "RESIZE",
   show_new_tab_button_in_tab_bar = false,
   adjust_window_size_when_changing_font_size = false,
