@@ -1,23 +1,29 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local platform = require('utils.platform')()
 
 -- This will hold the configuration.
 -- local config = wezterm.config_builder()
 local config = {
-  font_size = 15.6,
-  font = wezterm.font("DejaVuSansMono Nerd Font"),
-  -- font = wezterm.font("BlexMono Nerd Font"),
+  font_size = platform.is_mac and 15.6 or 12,
+  -- font = wezterm.font("DejaVuSansMono Nerd Font"),
+  font = wezterm.font("BlexMono Nerd Font"),
   cell_width = 0.90,
   line_height = 1.075,
 
   use_fancy_tab_bar = false,
-  hide_tab_bar_if_only_one_tab = true,
+  hide_tab_bar_if_only_one_tab = platform.is_mac and true or false,
   tab_max_width = 48,
   window_decorations = "RESIZE",
   show_new_tab_button_in_tab_bar = false,
   adjust_window_size_when_changing_font_size = false,
+  
+  default_cursor_style = "BlinkingBlock",
+  cursor_blink_ease_in = "Constant",
+  cursor_blink_ease_out = "Constant",
+  cursor_blink_rate = 700,
 
-  initial_rows = 45,
+  initial_rows = platform.is_mac and 45 or 32,
   initial_cols = 125,
 
   window_padding = {
@@ -50,7 +56,6 @@ config.color_schemes = {
   ['Homer'] = HomerColor,
 }
 config.color_scheme = 'Homer'
-
 config.colors = {
   cursor_bg = '#7edbfd',
   cursor_fg = 'black',
@@ -65,47 +70,35 @@ config.inactive_pane_hsb = {
 }
 
 
-local mod = {}
-local platform = require('utils.platform')()
-if platform.is_mac then
-  mod.SUPER = 'SUPER'
-  mod.SUPER_SHIFT = 'SUPER|SHIFT'
-  -- mod.SUPER_REV = 'SUPER|CTRL'
-elseif platform.is_win then
-  mod.SUPER = 'ALT' -- to not conflict with Windows key shortcuts
-  mod.SUPER_SHIFT = 'ALT|SHIFT'
-  -- mod.SUPER_REV = 'ALT|CTRL'
-end
-
 config.keys = {
   {
     key = 'LeftArrow',
-    mods = mod.SUPER,
+    mods = 'SUPER',
     action = wezterm.action.ActivateTabRelative(-1)
   },
   {
     key = 'RightArrow',
-    mods = mod.SUPER,
+    mods = 'SUPER',
     action = wezterm.action.ActivateTabRelative(1)
   },
   {
     key = '[',
-    mods = mod.SUPER_SHIFT,
+    mods = 'SUPER|SHIFT',
     action = wezterm.action.ActivateTabRelative(-1)
   },
   {
     key = ']',
-    mods = mod.SUPER_SHIFT,
+    mods = 'SUPER|SHIFT',
     action = wezterm.action.ActivateTabRelative(1)
   },
   {
     key = '\\',
-    mods = mod.SUPER,
+    mods = 'SUPER',
     action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
   },
   {
     key = '|',
-    mods = mod.SUPER,
+    mods = 'SUPER|SHIFT',
     action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
   },
 }
