@@ -1,13 +1,16 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
+local config = wezterm.config_builder()
+
 -- This will hold the configuration.
 -- local config = wezterm.config_builder()
 local config = {
   font_size = 15.6,
-  -- font = wezterm.font("DejaVuSansMono Nerd Font"),
-  font = wezterm.font("BlexMono Nerd Font"),
+  font = wezterm.font("DejaVuSansMono Nerd Font"),
+  -- font = wezterm.font("BlexMono Nerd Font"),
   color_scheme = 'Dissonance (Gogh)',
+  line_height = 1.08,
 
   use_fancy_tab_bar = false,
   hide_tab_bar_if_only_one_tab = true,
@@ -26,17 +29,17 @@ local config = {
   }
 }
 
+config.inactive_pane_hsb = {
+  saturation = 0.7,
+  brightness = 0.7,
+}
+
 config.colors = {
-  -- cursor and the cursor style is set to Block
   cursor_bg = '#7edbfd',
-  -- Overrides the text color when the current cell is occupied by the cursor
   cursor_fg = 'black',
   cursor_border = '#7edbfd',
-  -- the foreground color of selected text
   selection_fg = 'black',
-  -- the background color of selected text
   selection_bg = '#7edbfd',
-
 }
 
 local mod = {}
@@ -84,9 +87,6 @@ config.keys = {
   },
 }
 -- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
--- config.color_scheme = 'AdventureTime'
 
 -- and finally, return the configuration to wezterm
 return config
