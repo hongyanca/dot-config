@@ -1,13 +1,30 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-local platform = require('utils.platform')()
+
+local function is_found(str, pattern)
+  return string.find(str, pattern) ~= nil
+end
+
+local function check_platform()
+  return {
+    is_win = is_found(wezterm.target_triple, 'windows'),
+    is_linux = is_found(wezterm.target_triple, 'linux'),
+    is_mac = is_found(wezterm.target_triple, 'apple'),
+  }
+end
+
+local platform = check_platform()
+
 
 -- This will hold the configuration.
 -- local config = wezterm.config_builder()
 local config = {
   font_size = platform.is_mac and 15.6 or 12,
   -- font = wezterm.font("DejaVuSansMono Nerd Font"),
-  font = wezterm.font("BlexMono Nerd Font"),
+  -- font = wezterm.font("BlexMono Nerd Font"),
+  font = platform.is_mac and 
+    wezterm.font("DejaVuSansMono Nerd Font") or 
+    wezterm.font("BlexMono Nerd Font"),
   cell_width = 0.90,
   line_height = 1.075,
 
@@ -97,7 +114,7 @@ config.keys = {
     action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
   },
   {
-	key = '|',
+  key = '|',
     mods = 'SUPER|SHIFT',
     action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
   },
