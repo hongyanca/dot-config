@@ -22,9 +22,9 @@ local config = {
   font_size = platform.is_mac and 15.6 or 12,
   -- font = wezterm.font("DejaVuSansMono Nerd Font"),
   -- font = wezterm.font("BlexMono Nerd Font"),
-  font = platform.is_mac and 
-    wezterm.font("DejaVuSansMono Nerd Font") or 
-    wezterm.font("BlexMono Nerd Font"),
+  font = platform.is_mac and
+      wezterm.font("DejaVuSansMono Nerd Font") or
+      wezterm.font("BlexMono Nerd Font"),
   cell_width = 0.90,
   line_height = 1.075,
 
@@ -34,7 +34,7 @@ local config = {
   window_decorations = "RESIZE",
   show_new_tab_button_in_tab_bar = false,
   adjust_window_size_when_changing_font_size = false,
-  
+
   default_cursor_style = "BlinkingBlock",
   cursor_blink_ease_in = "Constant",
   cursor_blink_ease_out = "Constant",
@@ -114,7 +114,7 @@ config.keys = {
     action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' })
   },
   {
-  key = '|',
+    key = '|',
     mods = 'SUPER|SHIFT',
     action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
   },
@@ -124,18 +124,21 @@ config.keys = {
 config.mouse_bindings = {
   {
     event = { Down = { streak = 1, button = "Right" } },
-      mods = "NONE",
-      action = wezterm.action_callback(function(window, pane)
-        local has_selection = window:get_selection_text_for_pane(pane) ~= ""
-        if has_selection then
-          window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
-          window:perform_action(act.ClearSelection, pane)
-        else
-          window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
-        end
-      end),
+    mods = "NONE",
+    action = wezterm.action_callback(function(window, pane)
+      local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+      if has_selection then
+        window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
+        window:perform_action(act.ClearSelection, pane)
+      else
+        window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
+      end
+    end),
   },
 }
+
+
+config.window_close_confirmation = 'NeverPrompt'
 
 
 -- and finally, return the configuration to wezterm
