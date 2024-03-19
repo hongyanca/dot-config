@@ -118,6 +118,11 @@ config.keys = {
     mods = 'SUPER|SHIFT',
     action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' })
   },
+  {
+    key = 'w',
+    mods = 'SUPER',
+    action = wezterm.action.CloseCurrentTab { confirm = false },
+  },
 }
 
 
