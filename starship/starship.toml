@@ -1,8 +1,9 @@
-add_newline = true
+format = '$all $directory$git_branch$character'
+add_newline = false
 
 [os]
 format = "$symbol"
-style = "bold blue"
+style = "blue"
 disabled = false
 
 [aws]
@@ -48,6 +49,7 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [golang]
 symbol = " "
