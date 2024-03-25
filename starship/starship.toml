@@ -1,4 +1,6 @@
-format = '$all $directory$git_branch$character'
+# The format = '...' displays directory and git_branch on prompt line
+# format = '$all $directory$git_branch$character'
+
 add_newline = false
 
 [os]
