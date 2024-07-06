@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:/Applications/Tailscale.app/Contents/MacOS:/Users/yanh/Applications/vmware-ovftool:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/yanh/.oh-my-zsh"
@@ -20,6 +20,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -30,10 +34,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Solve brew error: externally-managed-environment
-export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/python@3.10/lib"
-export PKG_CONFIG_PATH="/usr/local/opt/python@3.10/lib/pkgconfig"
+# export PATH="/usr/local/opt/python@3.10/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/python@3.10/lib"
+# export PKG_CONFIG_PATH="/usr/local/opt/python@3.10/lib/pkgconfig"
 
 # Remote Docker engine
 export DOCKER_HOST=ssh://dev-ml
