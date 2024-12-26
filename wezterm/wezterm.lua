@@ -18,11 +18,12 @@ local platform = check_platform()
 -- This will hold the configuration.
 -- local config = wezterm.config_builder()
 local config = {
-	font_size = platform.is_mac and 15.6 or 12,
+	-- font_size = platform.is_mac and 15.6 or 12,
+	font_size = platform.is_mac and 17 or 12,
 	-- font = wezterm.font("DejaVuSansMono Nerd Font"),
 	-- font = wezterm.font("BlexMono Nerd Font"),
 	font = platform.is_mac and wezterm.font("DejaVuSansMono Nerd Font") or wezterm.font("BlexMono Nerd Font"),
-	cell_width = 0.90,
+	cell_width = 0.95, -- 0.90,
 	line_height = 1.075,
 	max_fps = 60,
 
@@ -138,6 +139,8 @@ config.mouse_bindings = {
 }
 
 config.window_close_confirmation = "NeverPrompt"
+
+config.default_cwd = "/Users/yanh/Downloads"
 
 -- and finally, return the configuration to wezterm
 return config

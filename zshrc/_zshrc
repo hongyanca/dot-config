@@ -15,8 +15,9 @@ export ZSH="/Users/yanh/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-  extract git autojump
+  extract git
 )
+eval "$(zoxide init zsh)"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,6 +42,9 @@ export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_mo
 # Remote Docker engine
 export DOCKER_HOST=ssh://dev-ml
 
+# Google AI Studio API Key for avante
+# Google AI Studio API Key for Zed
+
 alias ls="lsd"
 alias lt="lsd --tree"
 alias tree="lsd --tree"
@@ -49,10 +53,20 @@ alias nvim='NVIM_APPNAME=nvim-dev /Users/yanh/Applications/nvim-macos-x86_64/bin
 alias vi="nvim"
 alias vim="nvim"
 alias k="kubectl"
+alias j="z"
 alias copilot='gh copilot'
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
 alias fcd='cd $(find * -type d | fzf)'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
