@@ -9,4 +9,4 @@ rsync -avP --delete ~/.config/ghostty ./
 cat ~/.zshrc | grep -v 'API_KEY\|API KEY' >./zshrc/_zshrc
 
 mkdir -p ./tmux
-cp -r ~/.tmux.conf ./tmux/_tmux.conf
+cp -f ~/.tmux.conf ./tmux/_tmux.conf

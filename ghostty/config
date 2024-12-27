@@ -1,6 +1,6 @@
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
-background = 080808
+background = 060606
 # foreground= ffffff
 
 # Comments start with a `#` and are only valid on their own line.
@@ -8,14 +8,20 @@ background = 080808
 
 shell-integration = zsh
 
+working-directory = "/Users/yanh/Downloads/"
+
 # keybind = ctrl+z=close_surface
 keybind = super+shift+\=new_split:right
 keybind = super+\=new_split:down
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
 
 # Empty values reset the configuration to the default value
 font-family = "DejaVuSansMono Nerd Font"
 font-size = 17
-font-style-bold = false
+# font-style-bold = false
 adjust-cell-width = -5%
 adjust-cell-height = 8%
 
