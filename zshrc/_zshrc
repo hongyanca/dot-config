@@ -88,8 +88,8 @@ alias j="z"
 alias copilot='gh copilot'
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
-alias fcd='cd "$(fd -t d | fzf)"'
-alias fop='open "$(fd -t d | fzf)"'
+alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
+alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
