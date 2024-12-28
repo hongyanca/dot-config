@@ -1,3 +1,8 @@
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -49,7 +54,8 @@ alias ls="lsd"
 alias lt="lsd --tree"
 alias tree="lsd --tree"
 alias tls="tmux ls"
-alias tns="tmux new-session -s"
+alias td="tmux detach"
+alias tns="/usr/local/user_scripts/tmux-new-sibling-session.sh "
 alias ta="/usr/local/user_scripts/select-tmux-session.sh"
 # alias nvim='NVIM_APPNAME=nvim-lazyvim nvim'
 alias nvim='NVIM_APPNAME=nvim-dev /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
@@ -60,7 +66,8 @@ alias j="z"
 alias copilot='gh copilot'
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
-alias fcd='cd $(find * -type d | fzf)'
+alias fcd='cd "$(fd -t d | fzf)"'
+alias fop='open "$(fd -t d | fzf)"'
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

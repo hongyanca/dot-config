@@ -7,6 +7,7 @@ background = 060606
 # Blank lines are ignored!
 
 shell-integration = zsh
+confirm-close-surface = false
 
 working-directory = "/Users/yanh/Downloads/"
 
@@ -27,9 +28,11 @@ adjust-cell-height = 8%
 
 shell-integration-features = no-cursor
 cursor-style = block
+cursor-style-blink = true
 cursor-opacity = 0.9
 
 # background-opacity = 0.99
+unfocused-split-opacity = 0.42
 
 # theme = "Adventure"
 theme = "Brogrammer"
@@ -52,3 +55,6 @@ quit-after-last-window-closed-delay = 3s
 macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
+
+clipboard-read = allow
+clipboard-write = allow
