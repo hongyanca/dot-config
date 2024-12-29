@@ -74,22 +74,24 @@ export DOCKER_HOST=ssh://dev-ml
 alias ls="lsd"
 alias lt="lsd --tree"
 alias tree="lsd --tree"
+alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
+alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
+
 alias tls="tmux ls"
 alias td="tmux detach"
 alias tns="/usr/local/user_scripts/tmux-new-session.sh "
-alias tct="tmux choose-tree"
-alias ta="/usr/local/user_scripts/select-tmux-session.sh"
+alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
+
 # alias nvim='NVIM_APPNAME=nvim-lazyvim nvim'
 alias nvim='NVIM_APPNAME=nvim-dev /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
 alias vi="nvim"
 alias vim="nvim"
+
 alias k="kubectl"
 alias j="z"
 alias copilot='gh copilot'
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
-alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
-alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
