@@ -80,6 +80,7 @@ alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
 alias tls="tmux ls"
 alias td="tmux detach"
 alias tns="/usr/local/user_scripts/tmux-new-session.sh "
+alias tnw="/usr/local/user_scripts/tmux-new-window.sh "
 alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
 
 # alias nvim='NVIM_APPNAME=nvim-lazyvim nvim'
