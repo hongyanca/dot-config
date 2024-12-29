@@ -10,6 +10,8 @@ else
   WINDOW_NAME=$1
 fi
 
+SESSION_NAME="SESSION-$((RANDOM % 90 + 10))"
+
 # Check if inside a tmux session
 if [ -z "$TMUX" ]; then
   # Check if there are existing tmux sessions
@@ -19,11 +21,11 @@ if [ -z "$TMUX" ]; then
   else
     # No tmux sessions, create a new one
     if [ -z "$WINDOW_NAME" ]; then
-      tmux new-session -d -s "SESSION-0"
+      tmux new-session -d -s $SESSION_NAME
     else
-      tmux new-session -d -s "SESSION-0" -n "$WINDOW_NAME"
+      tmux new-session -d -s $SESSION_NAME -n "$WINDOW_NAME"
     fi
-    tmux attach-session -t "SESSION-0"
+    tmux attach-session -t $SESSION_NAME
     exit 0
   fi
 fi

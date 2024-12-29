@@ -31,6 +31,7 @@ local config = {
 	hide_tab_bar_if_only_one_tab = platform.is_mac and true or false,
 	tab_max_width = 48,
 	window_decorations = "RESIZE",
+	-- window_decorations = "NONE",
 	show_new_tab_button_in_tab_bar = false,
 	adjust_window_size_when_changing_font_size = false,
 
@@ -42,11 +43,17 @@ local config = {
 	initial_rows = platform.is_mac and 45 or 32,
 	initial_cols = 125,
 
+	-- window_padding = {
+	-- 	left = 8,
+	-- 	right = 8,
+	-- 	top = 4,
+	-- 	bottom = 4,
+	-- },
 	window_padding = {
-		left = 8,
-		right = 8,
-		top = 4,
-		bottom = 4,
+		left = 0,
+		right = 0,
+		top = 1,
+		bottom = 1,
 	},
 }
 

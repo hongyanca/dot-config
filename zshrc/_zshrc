@@ -24,6 +24,14 @@ if [[ -n "$TERM_PROGRAM" ]]; then
   fi
 fi
 
+if [[ -n "$TERM_PROGRAM" ]]; then
+  if [[ "$TERM_PROGRAM" == "tmux" ]]; then
+    HISTFILE="$HOME/.cmd_history/tmux_zsh_history"
+  else
+    HISTFILE="$HOME/.cmd_history/zsh_history"
+  fi
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -34,36 +42,39 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:/Applications/Tailscale.app/Contents/MacOS:/Users/yanh/Applications/vmware-ovftool:$PATH
 
-# Path to your oh-my-zsh installation.
+######## Use p10k without oh-my-zsh ##############################
+# Use p10k without oh-my-zsh
+# source ~/.p10k/powerlevel10k.zsh-theme
+# https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
+# Load Git completion
+# zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+# fpath=(~/.zsh $fpath)
+# autoload -Uz compinit && compinit
+##################################################################
+
+######## Use oh-my-zsh ###########################################
 export ZSH="/Users/yanh/.oh-my-zsh"
-
-# ZSH_THEME="agnoster-homer"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 plugins=(
   extract git
 )
-eval "$(zoxide init zsh)"
-
 source $ZSH/oh-my-zsh.sh
+##################################################################
 
+# Enable zoxide
+eval "$(zoxide init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
+export LANG=en_US.UTF-8
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/python@3.10/lib"
-# export PKG_CONFIG_PATH="/usr/local/opt/python@3.10/lib/pkgconfig"
+export ARCHFLAGS="-arch x86_64"
 
 # Remote Docker engine
 export DOCKER_HOST=ssh://dev-ml
@@ -72,7 +83,12 @@ export DOCKER_HOST=ssh://dev-ml
 # Google AI Studio API Key for Zed
 
 alias ls="lsd"
+alias l="ls -l"
+alias ll="ls -l"
+alias la="ls -la"
 alias lt="lsd --tree"
+alias ..="cd .."
+alias ...="cd ../.."
 alias tree="lsd --tree"
 alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
 alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
@@ -87,6 +103,7 @@ alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
 alias nvim='NVIM_APPNAME=nvim-dev /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
 alias vi="nvim"
 alias vim="nvim"
+alias ivi="/usr/local/user_scripts/ivi.sh"
 
 alias k="kubectl"
 alias j="z"
@@ -103,9 +120,10 @@ function y() {
   rm -f -- "$tmp"
 }
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
+# HISTFILE="$HOME/.cmd_history/zsh_history"
+unsetopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -113,8 +131,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
-SAVEHIST=1000000
-HISTSIZE=1000000
+SAVEHIST=500000
+HISTSIZE=500000
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
