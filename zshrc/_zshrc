@@ -100,7 +100,7 @@ alias tnw="/usr/local/user_scripts/tmux-new-window.sh "
 alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
 
 # alias nvim='NVIM_APPNAME=nvim-lazyvim nvim'
-alias nvim='NVIM_APPNAME=nvim-dev /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
+alias nvim='NVIM_APPNAME=nvim-lazyvim /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
 alias vi="nvim"
 alias vim="nvim"
 alias ivi="/usr/local/user_scripts/ivi.sh"
