@@ -79,8 +79,8 @@ export ARCHFLAGS="-arch x86_64"
 # Remote Docker engine
 export DOCKER_HOST=ssh://dev-ml
 
-# Google AI Studio API Key for avante
-# Google AI Studio API Key for Zed
+# Export Google API keys
+source $HOME/.google/export-api-keys.sh
 
 alias ls="lsd"
 alias l="ls -l"
