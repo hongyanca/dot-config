@@ -40,7 +40,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:/Applications/Tailscale.app/Contents/MacOS:/Users/yanh/Applications/vmware-ovftool:$PATH
+export PATH=$HOME/.local/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:/Applications/Tailscale.app/Contents/MacOS:/Users/yanh/Applications/vmware-ovftool:$PATH
 
 ######## Use p10k without oh-my-zsh ##############################
 # Use p10k without oh-my-zsh
@@ -99,17 +99,19 @@ alias tns="/usr/local/user_scripts/tmux-new-session.sh "
 alias tnw="/usr/local/user_scripts/tmux-new-window.sh "
 alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
 
-# alias nvim='NVIM_APPNAME=nvim-lazyvim nvim'
-alias nvim='NVIM_APPNAME=nvim-lazyvim /Users/yanh/Applications/nvim-macos-x86_64/bin/nvim'
+export _nvim_binary="$HOME/Applications/nvim-macos-x86_64/bin/nvim"
+alias nvim="NVIM_APPNAME=nvim-lazyvim $_nvim_binary"
+# alias nvim="NVIM_APPNAME=nvim $_nvim_binary"
+alias kvim="NVIM_APPNAME=nvim $_nvim_binary"
 alias vi="nvim"
 alias vim="nvim"
 alias ivi="/usr/local/user_scripts/ivi.sh"
 
 alias k="kubectl"
 alias j="z"
-alias copilot='gh copilot'
-alias gcs='gh copilot suggest'
-alias gce='gh copilot explain'
+alias copilot="gh copilot"
+alias gcs="gh copilot suggest"
+alias gce="gh copilot explain"
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
