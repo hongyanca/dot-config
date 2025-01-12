@@ -1,5 +1,3 @@
-# This is a fish configuration file.
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -8,22 +6,28 @@ end
 # fish_config theme choose "ayu Dark"
 fish_config theme choose Nord
 
-# Bind Ctrl+Y to accept autosuggestions
-bind \cy accept-autosuggestion
+alias ...='cd ../..'
 
 alias ls='lsd'
 alias l='ls -l'
-alias la='ls -a'
-alias ll='ls -la'
+alias la='ls -la'
+alias ll='ls -l'
 alias lla='ls -la'
 alias lt='ls --tree'
-set -x NVIM_APPNAME nvim-lazyvim
-alias vi='nvim'
-alias vim='nvim'
+
+set -x _nvim_binary "$HOME/Applications/nvim-macos-x86_64/bin/nvim"
+alias nvim="$_nvim_binary"
+# set -x NVIM_APPNAME nvim          # kickstart or other
+set -x NVIM_APPNAME nvim-lazyvim # LazyVim
+alias vi="nvim"
+alias vim="nvim"
 
 # Set up fzf key bindings
 fzf --fish | source
 set -x FZF_DEFAULT_COMMAND "fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+
+# Export Google API keys
+source "$HOME/.google/export-api-keys.fish"
 
 # Set up yazi `y` shell wrapper that provides the ability to
 # change the current working directory when exiting Yazi.
@@ -34,14 +38,17 @@ function y
         builtin cd -- "$cwd"
     end
     rm -f -- "$tmp"
-
+end
 
 # Set up zoxide
 zoxide init fish | source
 alias j='z'
 
 # Install NPM into home directory with distribution nodejs package
-set -x NPM_PACKAGES "$HOME/.npm-packages"
+# set -x NPM_PACKAGES "$HOME/.npm-packages"
+
+# Cargo env
+# source "$HOME/.cargo/env.fish"
 
 # Set $PATH
 set -x PATH $PATH $NPM_PACKAGES/bin $HOME/.local/bin $HOME/scripts
