@@ -79,8 +79,8 @@ export ARCHFLAGS="-arch x86_64"
 # Remote Docker engine
 export DOCKER_HOST=ssh://dev-ml
 
-# Export Google API keys
-source $HOME/.google/export-api-keys.sh
+# Export AI Providers' API keys
+source $HOME/.llm-provider/export-api-keys.sh
 
 alias ls="lsd"
 alias l="ls -l"
@@ -92,6 +92,7 @@ alias ...="cd ../.."
 alias tree="lsd --tree"
 alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
 alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
+alias sgpt="uvx --from shell-gpt sgpt"
 
 alias tls="tmux ls"
 alias td="tmux detach"
@@ -135,6 +136,11 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 SAVEHIST=500000
 HISTSIZE=500000
+
+# uv completion
+eval "$(uv generate-shell-completion zsh)"
+
+export TTS_OUTPUT_PATH="/Volumes/RAM-Disk"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

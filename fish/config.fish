@@ -26,8 +26,8 @@ alias vim="nvim"
 fzf --fish | source
 set -x FZF_DEFAULT_COMMAND "fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 
-# Export Google API keys
-source "$HOME/.google/export-api-keys.fish"
+# Export AI Providers' API keys
+source "$HOME/.llm-provider/export-api-keys.fish"
 
 # Set up yazi `y` shell wrapper that provides the ability to
 # change the current working directory when exiting Yazi.

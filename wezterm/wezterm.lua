@@ -22,6 +22,7 @@ local config = {
 	font_size = platform.is_mac and 17 or 12,
 	-- font = wezterm.font("DejaVuSansMono Nerd Font"),
 	-- font = wezterm.font("BlexMono Nerd Font"),
+	-- font = wezterm.font("CommitMono Nerd Font Propo"),
 	font = platform.is_mac and wezterm.font("DejaVuSansMono Nerd Font") or wezterm.font("BlexMono Nerd Font"),
 	cell_width = 0.95, -- 0.90,
 	line_height = 1.075,
