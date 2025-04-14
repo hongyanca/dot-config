@@ -75,17 +75,33 @@ HomerColor.ansi[7] = "#3acbcc"
 HomerColor.brights[7] = "#217e7b"
 HomerColor.ansi[8] = "#c0c0c0"
 HomerColor.brights[8] = "#f1f1f1"
+
+local TerafoxColor = wezterm.color.get_builtin_schemes()["terafox"]
+
 config.color_schemes = {
 	["Homer"] = HomerColor,
+	["Terafox"] = TerafoxColor,
 }
-config.color_scheme = "Homer"
+
+config.color_scheme = "Terafox"
 config.colors = {
-	cursor_bg = "#7edbfd",
-	cursor_fg = "black",
-	cursor_border = "#7edbfd",
-	selection_fg = "black",
-	selection_bg = "#7edbfd",
+	foreground = "#e6eaea",
+	background = "#020406",
+	cursor_bg = "#e6eaea",
+	cursor_border = "#e6eaea",
+	cursor_fg = "#020406",
+	selection_bg = "#293e40",
+	selection_fg = "#e6eaea",
 }
+
+-- config.color_scheme = "Homer"
+-- config.colors = {
+-- 	cursor_bg = "#7edbfd",
+-- 	cursor_fg = "black",
+-- 	cursor_border = "#7edbfd",
+-- 	selection_fg = "black",
+-- 	selection_bg = "#7edbfd",
+-- }
 
 config.inactive_pane_hsb = {
 	saturation = 0.7,
