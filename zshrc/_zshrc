@@ -92,7 +92,6 @@ alias ...="cd ../.."
 alias tree="lsd --tree"
 alias fcd='cd "$HOME/$(cd ~ && fd -t d | fzf)"'
 alias fop='open "$HOME/$(cd ~ && fd -t d | fzf)"'
-alias sgpt="uvx --from shell-gpt sgpt"
 
 alias tls="tmux ls"
 alias td="tmux detach"
@@ -106,13 +105,9 @@ alias nvim="NVIM_APPNAME=nvim-lazyvim $_nvim_binary"
 alias kvim="NVIM_APPNAME=nvim $_nvim_binary"
 alias vi="nvim"
 alias vim="nvim"
-alias ivi="/usr/local/user_scripts/ivi.sh"
 
 alias k="kubectl"
 alias j="z"
-alias copilot="gh copilot"
-alias gcs="gh copilot suggest"
-alias gce="gh copilot explain"
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -140,7 +135,12 @@ HISTSIZE=500000
 # uv completion
 eval "$(uv generate-shell-completion zsh)"
 
-export TTS_OUTPUT_PATH="/Volumes/RAM-Disk"
+{
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/github_id_remote_dev.id_ed25519
+  ssh-add ~/.ssh/github-hong-sait_id_ed25519
+} >/dev/null 2>&1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(~/.local/bin/mise activate bash)"
