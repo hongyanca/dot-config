@@ -22,8 +22,8 @@ local config = {
 	font_size = platform.is_mac and 17 or 12,
 	-- font = wezterm.font("DejaVuSansMono Nerd Font"),
 	-- font = wezterm.font("BlexMono Nerd Font"),
-	-- font = wezterm.font("CommitMono Nerd Font Propo"),
-	font = platform.is_mac and wezterm.font("DejaVuSansMono Nerd Font") or wezterm.font("BlexMono Nerd Font"),
+	-- font = wezterm.font("Hack Nerd Font"),
+	font = platform.is_mac and wezterm.font("GeistMono Nerd Font Propo") or wezterm.font("BlexMono Nerd Font"),
 	cell_width = 0.95, -- 0.90,
 	line_height = 1.075,
 	max_fps = 60,
@@ -32,6 +32,7 @@ local config = {
 	hide_tab_bar_if_only_one_tab = platform.is_mac and true or false,
 	tab_max_width = 48,
 	window_decorations = "RESIZE",
+	-- window_decorations = "RESIZE | MACOS_FORCE_SQUARE_CORNERS",
 	-- window_decorations = "NONE",
 	show_new_tab_button_in_tab_bar = false,
 	adjust_window_size_when_changing_font_size = false,
@@ -42,7 +43,7 @@ local config = {
 	cursor_blink_rate = 700,
 
 	initial_rows = platform.is_mac and 45 or 32,
-	initial_cols = 125,
+	initial_cols = 145,
 
 	-- window_padding = {
 	-- 	left = 8,
@@ -51,8 +52,8 @@ local config = {
 	-- 	bottom = 4,
 	-- },
 	window_padding = {
-		left = 0,
-		right = 0,
+		left = 4,
+		right = 4,
 		top = 1,
 		bottom = 1,
 	},
@@ -165,6 +166,10 @@ config.mouse_bindings = {
 config.window_close_confirmation = "NeverPrompt"
 
 config.default_cwd = "/Users/yanh/Downloads"
+
+-- Disable ligatures
+-- https://wezterm.org/config/font-shaping.html
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- and finally, return the configuration to wezterm
 return config

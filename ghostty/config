@@ -43,7 +43,7 @@ window-padding-balance = false
 window-padding-color = extend
 
 window-height = 45
-window-width = 128
+window-width = 145
 
 window-decoration = true
 window-title-font-family = "DejaVuSansM Nerd Font"
