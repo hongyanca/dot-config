@@ -129,7 +129,7 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
   eval "$(ssh-agent -s)" > /dev/null 2>&1
 fi
 {
-  ssh-add ~/.ssh/github_id_remote_dev.id_ed25519
+  ssh-add ~/.ssh/github-hongyanca
   ssh-add ~/.ssh/github-hong-sait_id_ed25519
 } >/dev/null 2>&1
 
@@ -147,3 +147,8 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
+
+# Added by Antigravity
+export PATH="/Users/yanh/.antigravity/antigravity/bin:$PATH"
+
+# export GPG_TTY=$(tty)
