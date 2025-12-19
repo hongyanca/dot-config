@@ -15,3 +15,4 @@ grep -A3 API zshrc/_zshrc
 mkdir -p ./tmux
 cp -f ~/.tmux.conf ./tmux/_tmux.conf
 cp -f /usr/local/user_scripts/tmux*.sh ./tmux/
+cp -f "$HOME/Library/Application Support/Code/User/settings.json" ./vscode/settings.json

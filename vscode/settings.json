@@ -1,0 +1,106 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "aws.profile": "profile:default",
+  "aws.samcli.location": "/usr/local/bin/sam",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "'IBM Plex Mono', Hack, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.tabSize": 2,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "yaml": true,
+    "python": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "redhat.telemetry.enabled": false,
+  "remote.SSH.remotePlatform": {
+    "devops": "linux",
+    "rh": "linux",
+    "app-srv-bsmt": "linux",
+    "alma": "linux",
+    "devops-vm": "linux",
+    "ubuntu-devops": "linux",
+    "devops-demo": "linux",
+    "kind": "linux",
+    "devops-ubuntu": "linux",
+    "192.168.0.138": "linux",
+    "192.168.47.151": "linux",
+    "scripting-vm": "linux",
+    "control-node": "linux"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "tabnine.experimentalAutoImports": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "CW_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontFamily": "BlexMono Nerd Font",
+  "terminal.integrated.fontSize": 15,
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.statusBar.visible": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "workbench.startupEditor": "none",
+  "lldb.suppressUpdateNotifications": true,
+  "github.copilot.selectedCompletionModel": "",
+  "roo-cline.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show",
+    "npm test",
+    "npm install",
+    "tsc"
+  ],
+  "explorer.confirmDelete": false,
+  "workbench.colorTheme": "Kanso Zen",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "roo-cline.deniedCommands": [],
+  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/yanh/Applications/nvim-macos-x86_64/bin/nvim"
+  // https://github.com/VSCodeVim/Vim
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  // To improve performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  }
+}
