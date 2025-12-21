@@ -147,13 +147,7 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
-
-# Added by Antigravity
-export PATH="/Users/yanh/.antigravity/antigravity/bin:$PATH"
-
-# export GPG_TTY=$(tty)
+# export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # pnpm
 export PNPM_HOME="/Users/yanh/Library/pnpm"
@@ -161,4 +155,10 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+alias pn=pnpm
 # pnpm end
+
+# Added by Antigravity
+export PATH="/Users/yanh/.antigravity/antigravity/bin:$PATH"
+
+# export GPG_TTY=$(tty)
