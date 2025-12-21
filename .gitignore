@@ -5,6 +5,9 @@
 # fish
 fish_variables
 
+# mpv
+mpv/watch_later/*
+
 # Logs
 
 logs

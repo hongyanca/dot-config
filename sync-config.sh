@@ -12,6 +12,8 @@ echo ""
 echo "Lines with API in .zshrc"
 grep -A3 API zshrc/_zshrc
 
+rm -rf ./mpv/watch_later
+
 mkdir -p ./tmux
 cp -f ~/.tmux.conf ./tmux/_tmux.conf
 cp -f /usr/local/user_scripts/tmux*.sh ./tmux/
