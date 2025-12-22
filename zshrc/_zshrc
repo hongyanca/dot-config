@@ -102,9 +102,10 @@ alias tnw="/usr/local/user_scripts/tmux-new-window.sh "
 alias ta="/usr/local/user_scripts/tmux-smart-attach.sh"
 
 export _nvim_binary="$HOME/Applications/nvim-macos-x86_64/bin/nvim"
+export _nvim_nightly_binary="$HOME/Applications/nvim-macos-x86_64-nightly/bin/nvim"
 alias nvim="NVIM_APPNAME=nvim-lazyvim $_nvim_binary"
-# alias nvim="NVIM_APPNAME=nvim $_nvim_binary"
-alias kvim="NVIM_APPNAME=nvim $_nvim_binary"
+alias kvim="NVIM_APPNAME=nvim $_nvim_nightly_binary"
+
 alias vi="nvim"
 alias vim="nvim"
 
@@ -148,15 +149,6 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 # export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
-# pnpm
-export PNPM_HOME="/Users/yanh/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-alias pn=pnpm
-# pnpm end
 
 # Added by Antigravity
 export PATH="/Users/yanh/.antigravity/antigravity/bin:$PATH"

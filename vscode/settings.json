@@ -12,9 +12,6 @@
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": false,
   "editor.tabSize": 2,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "extensions.ignoreRecommendations": true,
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -38,16 +35,12 @@
   "redhat.telemetry.enabled": false,
   "remote.SSH.remotePlatform": {
     "devops": "linux",
-    "rh": "linux",
     "app-srv-bsmt": "linux",
     "alma": "linux",
     "devops-vm": "linux",
     "ubuntu-devops": "linux",
     "devops-demo": "linux",
     "kind": "linux",
-    "devops-ubuntu": "linux",
-    "192.168.0.138": "linux",
-    "192.168.47.151": "linux",
     "scripting-vm": "linux",
     "control-node": "linux"
   },
