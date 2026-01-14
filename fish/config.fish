@@ -52,3 +52,7 @@ alias j='z'
 
 # Set $PATH
 set -x PATH $PATH $NPM_PACKAGES/bin $HOME/.local/bin $HOME/scripts
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/yanh/.local/bin" $PATH

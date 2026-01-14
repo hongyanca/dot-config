@@ -132,10 +132,19 @@ fi
 {
   ssh-add ~/.ssh/github-hongyanca
   ssh-add ~/.ssh/github-hong-sait_id_ed25519
+  ssh-add ~/.ssh/codeberg-hongyanca
 } >/dev/null 2>&1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Prioritize Homebrew Ruby over macOS system Ruby
+export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# Prioritize Homebrew sqlite3 over macOS system sqlite3
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
 # Activate mise
 eval "$(~/.local/bin/mise activate zsh)"
@@ -154,3 +163,16 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 export PATH="/Users/yanh/.antigravity/antigravity/bin:$PATH"
 
 # export GPG_TTY=$(tty)
+
+# bun completions
+[ -s "/Users/yanh/.bun/_bun" ] && source "/Users/yanh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Antigravity CLI installer
+export PATH="/Users/yanh/.local/bin:$PATH"
+
+# Add imagemagick-full and ffmpeg-full
+export PATH="/usr/local/opt/imagemagick-full/bin:/usr/local/opt/ffmpeg-full/bin:$PATH"

@@ -6,7 +6,7 @@
   "aws.samcli.location": "/usr/local/bin/sam",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
-  "editor.fontFamily": "'IBM Plex Mono', Hack, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'GeistMono NFP', Hack, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
@@ -42,7 +42,9 @@
     "devops-demo": "linux",
     "kind": "linux",
     "scripting-vm": "linux",
-    "control-node": "linux"
+    "control-node": "linux",
+    "192.168.47.137": "linux",
+    "s": "linux"
   },
   "security.workspace.trust.untrustedFiles": "open",
   "tabnine.experimentalAutoImports": true,
@@ -71,12 +73,10 @@
     "tsc"
   ],
   "explorer.confirmDelete": false,
-  "workbench.colorTheme": "Kanso Zen",
   "github.copilot.nextEditSuggestions.enabled": true,
   "roo-cline.deniedCommands": [],
-  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/yanh/Applications/nvim-macos-x86_64/bin/nvim"
+  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/yanh/Applications/nvim-macos-x86_64/bin/nvim",
   // https://github.com/VSCodeVim/Vim
-  "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
@@ -95,5 +95,8 @@
   // To improve performance
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
-  }
+  },
+  "workbench.colorTheme": "Kanso Ink",
+  "editor.fontWeight": "600",
+  "chat.viewSessions.orientation": "stacked"
 }
