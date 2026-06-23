@@ -32,42 +32,35 @@ if [[ -n "$TERM_PROGRAM" ]]; then
   fi
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/user_scripts:/Applications/Tailscale.app/Contents/MacOS:/Users/yanh/Applications/vmware-ovftool:$PATH
 
-######## Use p10k without oh-my-zsh ##############################
-# Use p10k without oh-my-zsh
-# source ~/.p10k/powerlevel10k.zsh-theme
-# https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
-# Load Git completion
-# zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-# fpath=(~/.zsh $fpath)
-# autoload -Uz compinit && compinit
-##################################################################
+######## Use zinit ###############################################
+ZINIT_HOME="${HOME}/.zinit/bin"
+if [[ -r "${ZINIT_HOME}/zinit.zsh" ]]; then
+  source "${ZINIT_HOME}/zinit.zsh"
 
-######## Use oh-my-zsh ###########################################
-export ZSH="/Users/yanh/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(
-  extract git
-)
-source $ZSH/oh-my-zsh.sh
+  autoload -Uz _zinit
+  (( ${+_comps} )) && _comps[zinit]=_zinit
+
+  zinit snippet OMZP::extract
+  zstyle ':omz:alpha:lib:git' async-prompt no
+  zinit snippet OMZL::git.zsh
+  zinit snippet OMZP::git
+
+  export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+  zinit ice depth"1" pick"/dev/null" multisrc"shell/completion.zsh shell/key-bindings.zsh"
+  zinit light junegunn/fzf
+
+  zinit ice depth"1" atinit"zicompinit; zicdreplay"
+  zinit light zsh-users/zsh-syntax-highlighting
+else
+  print -u2 "zinit not found at ${ZINIT_HOME}/zinit.zsh"
+fi
 ##################################################################
 
 # Enable zoxide
 eval "$(zoxide init zsh)"
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -135,9 +128,6 @@ fi
   ssh-add ~/.ssh/codeberg-hongyanca
 } >/dev/null 2>&1
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Prioritize Homebrew Ruby over macOS system Ruby
 export GEM_HOME="$HOME/.gem"
 export PATH="$HOME/.gem/bin:$PATH"
@@ -176,6 +166,14 @@ export PATH="/Users/yanh/.local/bin:$PATH"
 
 # Add imagemagick-full and ffmpeg-full
 export PATH="/usr/local/opt/imagemagick-full/bin:/usr/local/opt/ffmpeg-full/bin:$PATH"
+
+eval "$(starship init zsh)"
+_starship_right_prompt_trimmed() {
+  local prompt
+  prompt="$(starship prompt --right --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="${STARSHIP_CMD_STATUS:-}" --pipestatus="${STARSHIP_PIPE_STATUS[*]:-}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")"
+  print -rn -- "${prompt% }"
+}
+RPROMPT='$(_starship_right_prompt_trimmed)'
 
 # >>> otty shell integration >>>
 # Added by Otty — toggle in Settings > Shell > Shell Integration.
